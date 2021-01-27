@@ -6,4 +6,11 @@ urlpatterns = [
     path('jobs/', views.jobs, name="jobs"),
     path('login/', views.login, name="login"),
     path('register/', views.register, name="register"),
+    path('freelancer/', views.freelancer, name="freelancer"),
+    path('detail/', views.job_detail, name="detail"),
+    path('blog/', views.blog_index, name="blog"),
+    path('blog_details/', views.blog_details, name="blog_details"),
+    path('portfolio_grid/', views.portfolio_grid, name="portfolio_grid"),
+    path('about/', views.about, name="about"),
+    path('contact/', views.contact, name="contact"),
 ]
