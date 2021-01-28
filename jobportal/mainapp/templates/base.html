@@ -52,7 +52,7 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion">
-						<a href="index.html"><img src="{% static 'images/logo.png' %}" class="logo" alt=""></a>
+						<a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <!-- nav toggle button -->
@@ -64,8 +64,8 @@
                     <!-- extra nav -->
                     <div class="extra-nav">
                         <div class="extra-cell">
-                            <a href="/register" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
-                            <a href="/login" class="site-button"><i class="fa fa-lock"></i> login</a>
+                            <a href="{% url 'register' %}" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
+                            <a href="{% url 'login' %}" class="site-button"><i class="fa fa-lock"></i> login</a>
                         </div>
                     </div>
                     <!-- Quik search -->

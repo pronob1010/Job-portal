@@ -6,7 +6,6 @@ def login(request):
 def register(request):
     return render(request, 'register.html')
 
-
 def index(request):
     return render(request, 'index.html')
 
@@ -16,8 +15,8 @@ def jobs(request):
 def freelancer(request):
     return render(request, 'browse-candidates.html')
 
-def job_detail(request):
-    return render(request, 'job-detail.html')
+def jobdetail(request):
+    return render(request, 'jobdetail.html')
 
 def blog_index(request):
     return render(request, 'blog-classic-sidebar.html')
