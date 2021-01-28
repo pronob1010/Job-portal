@@ -64,8 +64,8 @@
                     <!-- extra nav -->
                     <div class="extra-nav">
                         <div class="extra-cell">
-                            <a href="register.html" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
-                            <a href="login.html" class="site-button"><i class="fa fa-lock"></i> login</a>
+                            <a href="/register" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
+                            <a href="/login" class="site-button"><i class="fa fa-lock"></i> login</a>
                         </div>
                     </div>
                     <!-- Quik search -->
@@ -79,28 +79,24 @@
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
 							<li class="active">
-								<a href="index.html">Home<i class="fa"></i></a>
-								<!-- <ul class="sub-menu">
-									<li><a href="index.html" class="dez-page">Home 1</a></li>
-									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
-								</ul> -->
+								<a href="{% url 'index' %}">Home<i class="fa"></i></a>
 							</li>
 							<li>
-								<a href="browse-job.html">HOT JOBS<i class="fa"></i></a>
+								<a href="{% url 'jobs' %}">HOT JOBS<i class="fa"></i></a>
 							</li>
 							<li>
-								<a href="browse-candidates.html">Freelancers<i class="fa"></i></a>
+								<a href="{% url 'freelancer' %}">Freelancers<i class="fa"></i></a>
 							</li>
 							<li>
 								<a href="#">About Us <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="about-us.html" class="dez-page">About Us</a></li>
-									<li><a href="portfolio-grid-3.html" class="dez-page">Portfolio</a></li>
-									<li><a href="contact.html" class="dez-page">Contact Us</a></li>
+									<li><a href="{% url 'about' %}" class="dez-page">About Us</a></li>
+									<li><a href="{% url 'portfolio_grid' %}" class="dez-page">Portfolio</a></li>
+									<li><a href="{% url 'contact' %}" class="dez-page">Contact Us</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="blog-classic-sidebar.html">Blog<i class="fa"></i></a>
+								<a href="{% url 'blog' %}">Blog<i class="fa"></i></a>
 							</li>
 						</ul>			
                     </div>
