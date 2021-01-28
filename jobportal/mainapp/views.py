@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,HttpResponse
+from mainapp.models import ContactUs
 def login(request):
     return render(request, 'login.html')
 
@@ -31,4 +31,11 @@ def about(request):
     return render(request, 'about-us.html')
 
 def contact(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+        # print(name, email, message)
+        obj = ContactUs(name = name, email = email, message = message)
+        obj.save()
     return render(request, 'contact.html')
