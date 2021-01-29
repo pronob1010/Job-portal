@@ -64,8 +64,13 @@
                     <!-- extra nav -->
                     <div class="extra-nav">
                         <div class="extra-cell">
-                            <a href="{% url 'register' %}" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
-                            <a href="{% url 'login' %}" class="site-button"><i class="fa fa-lock"></i> login</a>
+							{% if user.is_authenticated %}
+								<a href="#" class="site-button"><i class="fa"></i>{{user.username}}</a>
+								<a href="{% url 'logout' %}" class="site-button"><i class="fa"></i>logout</a>
+							{%else %}
+								<a href="{% url 'register' %}" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
+							<a href="{% url 'login' %}" class="site-button"><i class="fa fa-lock"></i> login</a>
+							{% endif%}
                         </div>
                     </div>
                     <!-- Quik search -->

@@ -25,7 +25,10 @@ def login_user(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form}) 
 
-
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+    
 def register(request):
     return render(request, 'register.html')
 
