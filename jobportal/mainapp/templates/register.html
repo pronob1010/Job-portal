@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static%}
 {% block content%}
-
+{% load crispy_forms_tags %}
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
@@ -34,10 +34,11 @@
 					<div class="col-md-12 m-b30">
 						<div class="p-a30 border-1  max-w500 m-auto">
 							<div class="tab-content">
-								<form id="login" class="tab-pane active">
+								<form id="login" method="POST" class="tab-pane active">
+								{% csrf_token %}
 									<h4 class="font-weight-700">PERSONAL INFORMATION</h4>
 									<p class="font-weight-600">If you have an account with us, please log in.</p>
-									<div class="form-group">
+									{% comment %} <div class="form-group">
 										<label class="font-weight-700">First Name * :</label>
 										<input name="dzName" required="" class="form-control" placeholder="First Name" type="text">
 									</div>
@@ -56,7 +57,8 @@
 									<div class="form-group text-left">
 										<label class="" style="padding-right:10px">Organization * :</label>
 										<input name="dzName" required="" type="checkbox">
-									</div>
+									</div> {% endcomment %}
+									{{form|crispy}}
 									<div class="text-left">
 										<button class="site-button button-lg outline outline-2"> CREATE </button>
 									</div>
