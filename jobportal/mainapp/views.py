@@ -25,7 +25,6 @@ def login_user(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form}) 
 
-    return render(request, 'login.html')
 
 def register(request):
     return render(request, 'register.html')
