@@ -43,6 +43,10 @@ def register(request):
 def index(request):
     return render(request, 'index.html')
 
+def userProfile(request):
+    return render(request, 'userProfile.html')
+    
+
 def jobs(request):
     return render(request, 'browse-job.html')
 
