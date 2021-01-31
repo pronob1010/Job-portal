@@ -50,6 +50,36 @@ def userProfile(request):
 def jobs(request):
     return render(request, 'browse-job.html')
 
+def my_jobs(request):
+    return render(request, 'browse-my-job.html')
+    
+
+from . forms import jobpostForm
+def createjob(request):
+    if request.method == "POST":
+        form = jobpostForm(request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.job_provider = request.user
+            data.save()
+            return redirect('/')
+    else:
+        form = jobpostForm()
+    return render(request, 'jobposting.html', {'form':form})
+
+from . forms import my_profileForm
+def editProfile(request):
+    if request.method == "POST":
+        form = my_profileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('userProfile/')
+    else:
+        form = my_profileForm()
+    return render(request, 'edit_profile.html', {'form':form})
+
+    
+
 def freelancer(request):
     return render(request, 'browse-candidates.html')
 

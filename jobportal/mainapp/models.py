@@ -1,7 +1,26 @@
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
+# from django.contrib.auth.models import AbstractUser
+
+
+from django.conf import settings
 # Create your models here.
+ 
+    
+
+class UserProfile(models.Model):
+    TYPE=(
+        ('Male','Male'),
+        ('Female','Female'),
+        ('Transgender','Transgender')
+        )
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
+    Organization = models.BooleanField(default=False)
+    Gender = models.CharField(max_length=100, choices=TYPE,default=None)
+    phone = models.CharField(max_length=15)
+    self_bio = models.TextField(max_length=150)
+
 class ContactUs(models.Model):
     name =  models.CharField(max_length=100)
     email = models.EmailField()
@@ -30,12 +49,12 @@ class jobpost(models.Model):
         ('Full_time','Full_time'),
         ('Part_time','Part_time'),
         )
-    Job_provider = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    job_provider = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     job_title = models.CharField(max_length=200)
     job_category = models.ManyToManyField(Job_categories)
     job_type = models.CharField(max_length=100, choices=TYPE)
     Job_introduction = models.CharField(max_length=500)
-    Job_thumbnail = models.ImageField(upload_to='media', null=True)
+    Job_thumbnail = models.ImageField(upload_to = 'media', null=True, blank=True)
     Job_description = models.TextField(max_length=3000)
     Job_requirement = models.TextField(max_length=3000)
     Job_salary_range = models.TextField(max_length=100)
@@ -71,14 +90,24 @@ class user_status(models.Model):
     user_status_text = models.TextField(max_length=2000, null = True)
     user_image = models.ImageField(upload_to='media', null=True)  
 
-class User(models.Model):
+
+
+class professional_profile(models.Model):
     TYPE=(
         ('Male','Male'),
         ('Female','Female'),
         ('Transgender','Transgender')
         )
+    TYPE2=(
+        ('Beginner','Beginner'),
+        ('Intermediate','Intermediate'),
+        ('Expart','Expart'),
+        )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    Gender = models.CharField(max_length=100, choices=TYPE)
-    phone = models.CharField(max_length=15)
-    self_bio = models.TextField(max_length=150)
-    
+    professional_title= models.CharField(max_length=150)
+    professional_Description = models.TextField(max_length=550)
+    professional_skills = models.TextField(max_length=550)
+    professional_Experience_level = models.TextField(max_length=50,choices=TYPE2)
+    professional_skills = models.TextField(max_length=550)
+    Total_Project =models.IntegerField(default=0)
+    Join_Date =  models.DateTimeField(default=now)
