@@ -7,8 +7,7 @@ from django.template.defaultfilters import slugify
 
 from django.conf import settings
 # Create your models here.
- 
-    
+
 
 class UserProfile(models.Model):
     TYPE=(
@@ -32,8 +31,8 @@ class ContactUs(models.Model):
     
 class Website_Details(models.Model):
     site_Title = models.CharField(max_length=200)
-    site_Logo = models.ImageField(upload_to='media')
-    site_background = models.ImageField(upload_to='media', null=True)
+    site_Logo = models.ImageField(upload_to='media/images')
+    site_background = models.ImageField(upload_to='media/images', null=True)
     physical_address = models.CharField(max_length=500, blank = True)
     site_Description = models.TextField(max_length=500)
 
@@ -60,14 +59,14 @@ class jobpost(models.Model):
     job_category = models.ManyToManyField(Job_categories)
     job_type = models.CharField(max_length=100, choices=TYPE)
     Job_introduction = models.CharField(max_length=500)
-    Job_thumbnail = models.ImageField(upload_to = 'media', null=True, blank=True)
+    Job_thumbnail = models.ImageField(upload_to ='media/images', null=True, blank=True)
     Job_description = models.TextField(max_length=3000)
     Job_requirement = models.TextField(max_length=3000)
     Job_salary_range = models.TextField(max_length=100)
     Job_Location = models.CharField(max_length=1000, null=True)
     Year_of_experience = models.IntegerField()
     job_created = models.DateTimeField(default=now)
-    Candidates = models.ManyToManyField(User, null=True)
+    Candidates = models.ManyToManyField(User, null=True,blank=True)
 
     def slug(self):
         return slugify(self.job_title)
@@ -86,7 +85,7 @@ class freelancer_job(models.Model):
     freelancer_title = models.CharField(max_length=200)
     freelancer_slug = models.SlugField(max_length=100,default=freelancer_title)
     freelancer_level = models.CharField(max_length=100, choices=TYPE)
-    freelancer_thumbnail = models.ImageField(upload_to='media', null=True)
+    freelancer_thumbnail = models.ImageField(upload_to='media/images', null=True)
     freelancer_description = models.TextField(max_length=3000)
     freelancer_expected_salary = models.IntegerField()
     freelancer_skills = models.TextField(max_length=3000)
@@ -103,7 +102,7 @@ class freelancer_job(models.Model):
 class user_status(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     user_status_text = models.TextField(max_length=2000, null = True)
-    user_image = models.ImageField(upload_to='media', null=True) 
+    user_image = models.ImageField(upload_to='media/images', null=True) 
     slug = models.SlugField(max_length=100,default=id)
 
     def slug(self):
@@ -111,9 +110,6 @@ class user_status(models.Model):
 
     def __str__(self):
         return self.user
-    
-
-
 
 class professional_profile(models.Model):
     TYPE=(

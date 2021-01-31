@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from . models import *
 
 def login_user(request):
     if request.method == 'POST':
@@ -45,10 +46,16 @@ def index(request):
 
 def userProfile(request):
     return render(request, 'userProfile.html')
-    
 
-def jobs(request):
-    return render(request, 'browse-job.html')
+from django.views.generic import ListView
+class jobs(ListView):
+    template_name = 'browse-job.html'
+    model = jobpost
+    context_object_name = 'jobposts'
+
+
+# def jobs(request):
+#     return render(request, 'browse-job.html')
 
 def my_jobs(request):
     return render(request, 'browse-my-job.html')
@@ -57,12 +64,13 @@ def my_jobs(request):
 from . forms import jobpostForm
 def createjob(request):
     if request.method == "POST":
-        form = jobpostForm(request.POST)
+        form = jobpostForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.save(commit=False)
             data.job_provider = request.user
             data.save()
-            return redirect('/')
+            form.save_m2m()
+            return redirect('userProfile')
     else:
         form = jobpostForm()
     return render(request, 'jobposting.html', {'form':form})
