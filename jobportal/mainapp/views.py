@@ -67,6 +67,17 @@ def createjob(request):
         form = jobpostForm()
     return render(request, 'jobposting.html', {'form':form})
 
+
+def jobdetail(request):
+    return render(request, 'jobdetail.html')
+
+# from . forms import jobpostForm
+def apply_done(request):
+    # form = jobpostForm()
+    # form.Candidates = request.user
+    # form.save()
+    return render(request, 'apply_done.html')
+
 from . forms import my_profileForm
 def editProfile(request):
     if request.method == "POST":
@@ -83,8 +94,7 @@ def editProfile(request):
 def freelancer(request):
     return render(request, 'browse-candidates.html')
 
-def jobdetail(request):
-    return render(request, 'jobdetail.html')
+
 
 def blog_index(request):
     return render(request, 'blog-classic-sidebar.html')
