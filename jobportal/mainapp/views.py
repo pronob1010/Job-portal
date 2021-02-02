@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect , get_object_or_404
 from mainapp.models import ContactUs
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login, logout
@@ -45,7 +45,7 @@ def index(request):
     return render(request, 'index.html')
 
 def userProfile(request):
-    return render(request, 'userProfile.html')
+    return render(request, 'userProfile.html', {})
 
 from django.views.generic import ListView
 class jobs(ListView):
@@ -53,12 +53,15 @@ class jobs(ListView):
     model = jobpost
     context_object_name = 'jobposts'
 
+class my_jobs(ListView):
+    template_name = 'browse-my-job.html'
+    model = jobpost
+    context_object_name = 'post'
 
 # def jobs(request):
 #     return render(request, 'browse-job.html')
 
-def my_jobs(request):
-    return render(request, 'browse-my-job.html')
+
     
 
 from . forms import jobpostForm
@@ -70,14 +73,16 @@ def createjob(request):
             data.job_provider = request.user
             data.save()
             form.save_m2m()
-            return redirect('userProfile')
+            return redirect('my_jobs')
     else:
         form = jobpostForm()
     return render(request, 'jobposting.html', {'form':form})
 
 
-def jobdetail(request):
-    return render(request, 'jobdetail.html')
+def jobdetail(request, id=id):
+    post = get_object_or_404(jobpost,id=id)
+    # post = None
+    return render(request, 'jobdetail.html', {'post':post})
 
 # from . forms import jobpostForm
 def apply_done(request):
@@ -108,6 +113,7 @@ def blog_index(request):
     return render(request, 'blog-classic-sidebar.html')
 
 def blog_details(request):
+
     return render(request, 'blog-details.html')
 
 def portfolio_grid(request):

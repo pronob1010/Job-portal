@@ -50,8 +50,8 @@ class Job_categories(models.Model):
     
 class jobpost(models.Model):
     TYPE=(
-        ('Full_time','Full_time'),
-        ('Part_time','Part_time'),
+        ('Full Time','Full Time'),
+        ('Part Time','Part Time'),
         )
     job_provider = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,related_name='author')
     job_title = models.CharField(max_length=200)
@@ -66,7 +66,10 @@ class jobpost(models.Model):
     Job_Location = models.CharField(max_length=1000, null=True)
     Year_of_experience = models.IntegerField()
     job_created = models.DateTimeField(default=now)
+    job_deadline = models.DateTimeField(default=None, null=True)
     Candidates = models.ManyToManyField(User, null=True,blank=True)
+    how_to_apply =  models.TextField(max_length=100, null=True, blank=True)
+    
 
     def slug(self):
         return slugify(self.job_title)

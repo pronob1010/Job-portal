@@ -31,10 +31,10 @@
 							<ul class="post-job-bx">
 							{% for p in jobposts %}
 								<li>
-									<a href="{% url 'jobdetail' %}">
+									<a href="{% url 'jobdetail' p.id %}">
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
-												<span><img src="{{p.Job_thumbnail.imageURL}}"/></span>
+												<span><img src="{{p.Job_thumbnail.url}}"/></span>
 											</div>
 											<div class="job-post-info">
 												<h4>{{p.job_title}}</h4>
