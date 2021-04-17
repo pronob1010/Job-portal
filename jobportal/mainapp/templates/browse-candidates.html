@@ -25,184 +25,36 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xl-9 col-lg-8">
-							<div class="m-b30">
-								<input type="text" class="form-control" placeholder="Search freelancer services">
-							</div>
+							 
 							<ul class="post-job-bx">
+								{% for p in free_jobs%}
 								<li>
-									<a href="#">
+									<a href="{% url 'freelancher_detail' p.id %}">
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic1.jpg' %}"/></span>
+												<span><img src="{{p.freelancer_thumbnail.url}}"/></span>
 											</div>
 											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
+												<h4>{{p.freelancer_title}}</h4>
 												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
+													<li><i class="fa fa-map-marker"></i> {{p.freelancer_level}}</li>
+													<li><i class="fa fa-usd"></i> {{p.freelancer_expected_salary}}</li>
+													<li><i class="fa fa-clock-o"></i> {{p.freelancer_created}}</li>
 												</ul>
 											</div>
 										</div>
 										<div class="d-flex">
 											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
+												{{p.freelancer_skills}}
 											</div>
 											<div class="salary-bx">
-												<span>$45 Per Hour</span>
+												<span>{{p.freelancer_expected_salary}}</span>
 											</div>
 										</div>
 										<span class="post-like fa fa-heart-o"></span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic2.jpg' %}"/></span>
-											</div>
-											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
-												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
-												</ul>
-											</div>
-										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
-											</div>
-											<div class="salary-bx">
-												<span>$45 Per Hour</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic3.jpg' %}"/></span>
-											</div>
-											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
-												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
-												</ul>
-											</div>
-										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
-											</div>
-											<div class="salary-bx">
-												<span>$45 Per Hour</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic1.jpg' %}"/></span>
-											</div>
-											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
-												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
-												</ul>
-											</div>
-										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
-											</div>
-											<div class="salary-bx">
-												<span>$45 Per Hour</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic2.jpg' %}"/></span>
-											</div>
-											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
-												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
-												</ul>
-											</div>
-										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
-											</div>
-											<div class="salary-bx">
-												<span>$45 Per Hour</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="{% static 'images/testimonials/pic3.jpg' %}"/></span>
-											</div>
-											<div class="job-post-info">
-												<h4>Digital Marketing Executive</h4>
-												<ul>
-													<li><i class="fa fa-map-marker"></i> New York</li>
-													<li><i class="fa fa-usd"></i> Full Time</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
-												</ul>
-											</div>
-										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>Javascript</span>
-												<span>CSS</span>
-												<span>HTML</span>
-												<span>Bootstrap</span>
-											</div>
-											<div class="salary-bx">
-												<span>$45 Per Hour</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-								</li>
+								 {% endfor %}
 							</ul>
 							<div class="pagination-bx m-t30">
 								<ul class="pagination">

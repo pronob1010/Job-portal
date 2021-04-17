@@ -38,26 +38,6 @@
 								{% csrf_token %}
 									<h4 class="font-weight-700">PERSONAL INFORMATION</h4>
 									<p class="font-weight-600">If you have an account with us, please log in.</p>
-									{% comment %} <div class="form-group">
-										<label class="font-weight-700">First Name * :</label>
-										<input name="dzName" required="" class="form-control" placeholder="First Name" type="text">
-									</div>
-									<div class="form-group">
-										<label class="font-weight-700">Last Name * :</label>
-										<input name="dzName" required="" class="form-control" placeholder="Last Name" type="text">
-									</div>
-									<div class="form-group">
-										<label class="font-weight-700">E-MAIL * :</label>
-										<input name="dzName" required="" class="form-control" placeholder="Your Email Id" type="email">
-									</div>
-									<div class="form-group">
-										<label class="font-weight-700">PASSWORD * :</label>
-										<input name="dzName" required="" class="form-control " placeholder="Type Password" type="password">
-									</div>
-									<div class="form-group text-left">
-										<label class="" style="padding-right:10px">Organization * :</label>
-										<input name="dzName" required="" type="checkbox">
-									</div> {% endcomment %}
 									{{form|crispy}}
 									<div class="text-left">
 										<button class="site-button button-lg outline outline-2"> CREATE </button>

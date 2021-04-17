@@ -16,7 +16,7 @@ class UserProfile(models.Model):
         ('Transgender','Transgender')
         )
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
-    Organization = models.BooleanField(default=False)
+    Organization = models.BooleanField(default=False, null=True, blank=True)
     Gender = models.CharField(max_length=100, choices=TYPE,default=None)
     phone = models.CharField(max_length=15)
     self_bio = models.TextField(max_length=150)
@@ -33,8 +33,10 @@ class Website_Details(models.Model):
     site_Title = models.CharField(max_length=200)
     site_Logo = models.ImageField(upload_to='media/images')
     site_background = models.ImageField(upload_to='media/images', null=True)
-    physical_address = models.CharField(max_length=500, blank = True)
     site_Description = models.TextField(max_length=500)
+    address = models.CharField(max_length=100, null= True, blank=True)
+    email = models.CharField(max_length=50, null=True, blank=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
         return self.site_Title
@@ -101,7 +103,7 @@ class freelancer_job(models.Model):
         return slugify(self.freelancer_title)
 
     def __str__(self):
-        return self.job_title
+        return self.freelancer_title
 class user_status(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     user_status_text = models.TextField(max_length=2000, null = True)
@@ -137,3 +139,6 @@ class professional_profile(models.Model):
 
     def slug(self):
         return slugify(self.professional_title)
+
+class testimonials(models.Model):
+    text = models.TextField(max_length=200, null=True, blank=True)

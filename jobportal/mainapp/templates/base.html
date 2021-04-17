@@ -24,15 +24,12 @@
 
 	
 	<!-- PAGE TITLE HERE -->
-	<title>JobBoard - HTML Template</title>
+	<title>JobPortal</title>
 	
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<!--[if lt IE 9]>
-	<script src="{% static 'js/html5shiv.min.js"></script>
-	<script src="{% static 'js/respond.min.js"></script>
-	<![endif]-->
+ 
 	
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
@@ -49,7 +46,7 @@
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
-<div id="loading-area"></div>
+<!-- <div id="loading-area"></div> -->
 <div class="page-wraper">
 	<!-- header -->
     <header class="site-header mo-left header fullwidth">
@@ -74,6 +71,9 @@
 							{% if user.is_authenticated %}
 								<a href="{% url 'userProfile' %}" class="site-button"><i class="fa"></i>{{user.username}}</a>
 								<a href="{% url 'logout' %}" class="site-button"><i class="fa"></i>logout</a>
+								{% if user.is_staff %}
+								<a href="http://localhost:8000/admin" class="site-button"><i class="fa"></i>Admin Panel</a>
+								{% endif %}
 							{%else %}
 								<a href="{% url 'register' %}" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
 							<a href="{% url 'login' %}" class="site-button"><i class="fa fa-lock"></i> login</a>
@@ -90,7 +90,7 @@
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
-							<li class="active">
+							<li  >
 								<a href="{% url 'index' %}">Home<i class="fa"></i></a>
 							</li>
 							<li>
@@ -103,13 +103,11 @@
 								<a href="#">About Us <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 									<li><a href="{% url 'about' %}" class="dez-page">About Us</a></li>
-									<li><a href="{% url 'portfolio_grid' %}" class="dez-page">Portfolio</a></li>
+									 
 									<li><a href="{% url 'contact' %}" class="dez-page">Contact Us</a></li>
 								</ul>
 							</li>
-							<li>
-								<a href="{% url 'blog' %}">Blog<i class="fa"></i></a>
-							</li>
+							 
 						</ul>			
                     </div>
                 </div>
@@ -220,8 +218,7 @@
 <script src='{% static "js/recaptcha/api.js" %}'></script> <!-- Google API For Recaptcha  -->
 <script src="{% static 'js/dz.ajax.js' %}"></script><!-- CONTACT JS  -->
 <script src="{% static 'plugins/paroller/skrollr.min.js' %}"></script><!-- PAROLLER -->
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-
+ 
 </body>
 
 </html>

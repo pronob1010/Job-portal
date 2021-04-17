@@ -16,8 +16,10 @@ urlpatterns = [
     path('my_jobs/', views.my_jobs.as_view(), name="my_jobs"),
     path('userProfile/', views.userProfile, name="userProfile"),
     path('createjob/', views.createjob, name="createjob"),
+    path('createjobasfreelancher/', views.createjobasfreelancher, name="createjobasfreelancher"),    
+    path('freelancher_detail/<str:id>/', views.freelancher_detail, name="freelancher_detail"),
 
-    path('<str:id>/', views.jobdetail, name="jobdetail"),
+    path('jobs/<str:id>/', views.jobdetail, name="jobdetail"),
     path('apply_done/', views.apply_done, name="apply_done"),
     
     path('blog/', views.blog_index, name="blog"),
