@@ -16,15 +16,12 @@ class UserProfile(models.Model):
     Gender = models.CharField(max_length=100, choices=TYPE,default=None)
     phone = models.CharField(max_length=15)
     self_bio = models.TextField(max_length=150)
-
 class ContactUs(models.Model):
     name =  models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField(max_length=1000)
-
     def __str__(self):
         return self.name
-    
 class Website_Details(models.Model):
     site_Title = models.CharField(max_length=200)
     site_Logo = models.ImageField(upload_to='media/images')
@@ -33,16 +30,13 @@ class Website_Details(models.Model):
     address = models.CharField(max_length=100, null= True, blank=True)
     email = models.CharField(max_length=50, null=True, blank=True)
     phone = models.CharField(max_length=15, blank=True, null=True)
-
     def __str__(self):
         return self.site_Title
 class Job_categories(models.Model):
     tittle = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100,default=tittle)
-
     def slug(self):
         return slugify(self.title)
-
     def __str__(self):
         return self.tittle
     
@@ -67,15 +61,12 @@ class jobpost(models.Model):
     job_deadline = models.DateTimeField(default=None, null=True)
     Candidates = models.ManyToManyField(User, null=True,blank=True)
     how_to_apply =  models.TextField(max_length=100, null=True, blank=True)
-    
 
     def slug(self):
         return slugify(self.job_title)
 
-
     def __str__(self):
         return self.job_title
-
 class freelancer_job(models.Model):
     TYPE=(
         ('Beginner','Beginner'),
@@ -111,7 +102,6 @@ class user_status(models.Model):
 
     def __str__(self):
         return self.user
-
 class professional_profile(models.Model):
     TYPE=(
         ('Male','Male'),
@@ -135,6 +125,5 @@ class professional_profile(models.Model):
 
     def slug(self):
         return slugify(self.professional_title)
-
 class testimonials(models.Model):
     text = models.TextField(max_length=200, null=True, blank=True)
